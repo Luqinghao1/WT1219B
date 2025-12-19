@@ -14,18 +14,25 @@
    <string>Fitting Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">/* 全局设置：强制黑色字体，白色背景，微软雅黑 */
+   <string notr="true">/* 全局设置 */
 QWidget {
     color: #000000;
     font-family: &quot;Microsoft YaHei&quot;, &quot;Segoe UI&quot;, sans-serif;
     font-size: 9pt;
 }
 
+/* 分割条样式：白色不透明 */
+QSplitter::handle {
+    background-color: white;
+    border: 1px solid #d0d0d0;
+    width: 5px;
+}
+
 /* 分组框样式 */
 QGroupBox {
     border: 1px solid #b0b0b0;
     border-radius: 4px;
-    margin-top: 2.5ex; /* 为标题留出空间 */
+    margin-top: 2.5ex;
     font-weight: bold;
     color: #000000;
 }
@@ -37,7 +44,7 @@ QGroupBox::title {
     color: #000000;
 }
 
-/* 现代化按钮样式 */
+/* 按钮样式 */
 QPushButton {
     background-color: #ffffff;
     border: 1px solid #c0c0c0;
@@ -74,7 +81,7 @@ QHeaderView::section {
     color: #000000;
 }
 
-/* 输入控件样式 */
+/* 输入框样式 */
 QLineEdit, QDoubleSpinBox, QSpinBox, QComboBox {
     border: 1px solid #c0c0c0;
     border-radius: 2px;
@@ -105,7 +112,7 @@ QComboBox::drop-down {
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <widget class="QWidget" name="leftPanel" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -124,7 +131,7 @@ QComboBox::drop-down {
        <item>
         <widget class="QGroupBox" name="groupBox_Data">
          <property name="title">
-          <string>1. 数据与模型</string>
+          <string>1. 数据加载与模型选择</string>
          </property>
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0">
@@ -147,7 +154,7 @@ QComboBox::drop-down {
        <item>
         <widget class="QGroupBox" name="groupBox_Params">
          <property name="title">
-          <string>2. 拟合参数</string>
+          <string>2. 拟合参数设置</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
@@ -214,7 +221,7 @@ QComboBox::drop-down {
        <item>
         <widget class="QGroupBox" name="groupBox_Control">
          <property name="title">
-          <string>3. 自动拟合</string>
+          <string>3. 自动拟合控制</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
@@ -229,7 +236,13 @@ QComboBox::drop-down {
             <item>
              <widget class="QSlider" name="sliderWeight">
               <property name="orientation">
-               <enum>Qt::Orientation::Horizontal</enum>
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>50</number>
               </property>
              </widget>
             </item>
@@ -266,7 +279,7 @@ QComboBox::drop-down {
              <number>0</number>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="textVisible">
              <bool>true</bool>
@@ -305,21 +318,21 @@ QComboBox::drop-down {
           </item>
           <item row="1" column="0">
            <widget class="QPushButton" name="btnSaveFit">
-            <property name="toolTip">
-             <string>保存当前拟合结果到项目文件</string>
-            </property>
             <property name="text">
              <string>保存状态</string>
+            </property>
+            <property name="toolTip">
+             <string>保存当前拟合结果到项目文件</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
            <widget class="QPushButton" name="btnExportReport">
-            <property name="toolTip">
-             <string>生成Word格式的试井解释报告</string>
-            </property>
             <property name="text">
              <string>导出报告</string>
+            </property>
+            <property name="toolTip">
+             <string>生成Word格式的试井解释报告</string>
             </property>
            </widget>
           </item>
@@ -347,7 +360,7 @@ QComboBox::drop-down {
          <item>
           <spacer name="horizontalSpacer">
            <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
+            <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
